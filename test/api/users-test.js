@@ -85,7 +85,6 @@ describe('a user auth-auth system', function() {
     });
   });
 
-
   it('should fail to add a user with no password', function(done) {
     //send a req with a password = '' expect res to be 'password is required'
     chai.request(url)
