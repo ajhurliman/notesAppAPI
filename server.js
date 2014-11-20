@@ -12,9 +12,11 @@ app.use(passport.initialize());
 
 require('./lib/passport')(passport);
 var jwtauth = require('./lib/jwt_auth')(app.get('jwtSecret'));
+var checkExpired = require('./lib/checkExpired')();
 
 var notesRouter = express.Router();
 notesRouter.use(jwtauth);
+notesRouter.use(checkExpired);
 
 require('./routes/users_routes')(app, passport);
 require('./routes/notes_routes')(notesRouter);
